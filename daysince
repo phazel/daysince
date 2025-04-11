@@ -1,3 +1,21 @@
 #!/usr/bin/env ruby
 
-puts "hello"
+require 'json'
+
+SECONDS_IN_A_DAY = 86400
+
+dir_name = "./records"
+file_name = "#{dir_name}/#{ARGV[0]}.json"
+action = ARGV[1]
+
+if !Dir.exist?(dir_name) then Dir.mkdir(dir_name) end
+if !File.exist?(file_name) || File.empty?(file_name) then File.write(file_name, [].to_json) end
+
+existing_records = JSON.parse(File.read(file_name))
+
+if action === "today" then
+  record = Time.now
+  File.write(file_name, (existing_records.unshift(record)).to_json)
+else
+  puts ((Time.now - Time.new(existing_records.first)) / SECONDS_IN_A_DAY).floor
+end

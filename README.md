@@ -2,6 +2,10 @@
 
 A basic Ruby cli tool which reads and writes from text files. The equivalent of a "days since X happened" sign.
 
+```
+bundle install
+```
+
 ## Usage
 
 See how many days since the event:
@@ -13,5 +17,5 @@ See how many days since the event:
 Record that the event happened today:
 
 ```
-./daysince [event] ["today" OR "reset"]
+./daysince [event] today
 ```
