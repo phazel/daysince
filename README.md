@@ -8,6 +8,12 @@ bundle install
 
 ## Usage
 
+See existing recorded events:
+
+```
+./daysince
+```
+
 See how many days since the event:
 
 ```
