@@ -17,11 +17,14 @@ if file_name then
   existing_records = JSON.parse(File.read(file_path))
 
   if action === "today" then
+    # record new event
     record = Time.now
     File.write(file_path, (existing_records.unshift(record)).to_json)
   else
+    # output days since last event
     puts ((Time.now - Time.new(existing_records.first)) / SECONDS_IN_A_DAY).floor
   end
 else
+  # output all event types
   Dir.each_child(dir_name) { |child| puts '- ' + child.split('.')[0] }
 end
